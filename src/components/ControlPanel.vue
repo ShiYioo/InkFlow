@@ -25,7 +25,7 @@ const PAPER_PRESETS = {
     fontSize: 62, lineSpacing: 100, marginTop: 80, marginBottom: 80, marginLeft: 60, marginRight: 60,
   },
   'paper-20': {
-    fontSize: 40, lineSpacing: 58, marginTop: 243, marginBottom: 50, marginLeft: 90, marginRight: 60,
+    fontSize: 40, lineSpacing: 58, marginTop: 243, marginBottom: 50, marginLeft: 90, marginRight: 95,
   },
   'paper-30': {
     fontSize: 46, lineSpacing: 67, marginTop: 156, marginBottom: 50, marginLeft: 133, marginRight: 134,

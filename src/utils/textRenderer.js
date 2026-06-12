@@ -75,25 +75,37 @@ export function createTextRenderer() {
     for (const para of paragraphs) {
       if (para === '') { lines.push(''); continue }
 
+      const charWidths = []
+      for (let i = 0; i < para.length; i++) {
+        charWidths[i] = ctx.measureText(para[i]).width
+      }
+
       let currentLine = ''
+      let currentWidth = 0
       for (let i = 0; i < para.length; i++) {
         const char = para[i]
-        if (currentLine === '') { currentLine = char; continue }
+        const charWidth = charWidths[i]
 
-        const testLine = currentLine + char
-        const metrics = ctx.measureText(testLine)
+        if (currentLine === '') {
+          currentLine = char
+          currentWidth = charWidth
+          continue
+        }
 
-        if (metrics.width > maxWidth) {
+        if (currentWidth + charWidth > maxWidth) {
           if (endChars.includes(char)) {
             currentLine += char
             lines.push(currentLine)
             currentLine = ''
+            currentWidth = 0
           } else {
             lines.push(currentLine)
             currentLine = char
+            currentWidth = charWidth
           }
         } else {
           currentLine += char
+          currentWidth += charWidth
         }
       }
       if (currentLine) lines.push(currentLine)
