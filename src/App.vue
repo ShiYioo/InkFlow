@@ -33,7 +33,7 @@ const penConfig = reactive({
   strikethroughLengthSigma: 2,
   strikethroughWidthSigma: 2,
   strikethroughAngleSigma: 2,
-  strikethroughWidth: 8,
+  strikethroughWidth: 3,
   renderWidth: 2481,
   renderHeight: 3507,
 })

@@ -23,7 +23,7 @@ export function createTextRenderer() {
     strikethroughLengthSigma: 2,
     strikethroughWidthSigma: 2,
     strikethroughAngleSigma: 2,
-    strikethroughWidth: 8,
+    strikethroughWidth: 3,
   }
 
   const RENDER_KEYS = new Set(Object.keys(config))
