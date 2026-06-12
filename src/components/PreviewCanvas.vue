@@ -60,7 +60,7 @@ function renderToDisplay() {
     drawY = 0
   }
 
-  dctx.fillStyle = '#e8e0d0'
+  dctx.fillStyle = '#eef3f9'
   dctx.fillRect(0, 0, displayW, displayH)
   dctx.drawImage(renderCanvas, drawX, drawY, drawW, drawH)
 }
@@ -154,10 +154,11 @@ defineExpose({ handleExport, render: handleRender })
 .preview-wrapper {
   width: 100%;
   height: 100%;
-  border-radius: 8px;
+  border-radius: var(--ba-radius-lg);
   overflow: hidden;
-  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.1);
-  background: #e8e0d0;
+  box-shadow: var(--ba-shadow);
+  border: 1px solid var(--ba-border-light);
+  background: #eef3f9;
 }
 
 .preview-canvas {

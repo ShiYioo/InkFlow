@@ -1,5 +1,5 @@
 <script setup>
-import { ref, reactive, watch } from 'vue'
+import { ref, reactive } from 'vue'
 import PreviewCanvas from './components/PreviewCanvas.vue'
 import ControlPanel from './components/ControlPanel.vue'
 
@@ -52,16 +52,22 @@ function handleExport() {
     <header class="app-header">
       <div class="header-inner">
         <div class="brand">
-          <svg width="24" height="24" viewBox="0 0 28 28" fill="none">
-            <rect width="28" height="28" rx="8" fill="url(#bg)" />
-            <path d="M8 20L14 7L20 20" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" />
-            <path d="M10 16H18" stroke="white" stroke-width="2" stroke-linecap="round" />
-            <defs><linearGradient id="bg" x1="0" y1="0" x2="28" y2="28"><stop stop-color="#3a7bd5" /><stop offset="1" stop-color="#5b9bd5" /></linearGradient></defs>
-          </svg>
-          <h1 class="brand-title">InkFlow</h1>
-          <span class="brand-sub">手写模拟器</span>
+          <div class="brand-icon">
+            <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
+              <rect width="28" height="28" rx="8" fill="url(#brand-grad)" />
+              <path d="M7 20L14 7L21 20" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" />
+              <path d="M9.5 16H18.5" stroke="white" stroke-width="2" stroke-linecap="round" />
+              <defs><linearGradient id="brand-grad" x1="0" y1="0" x2="28" y2="28"><stop stop-color="#1289f9" /><stop offset="1" stop-color="#4da6ff" /></linearGradient></defs>
+            </svg>
+          </div>
+          <div class="brand-text">
+            <h1 class="brand-title">InkFlow</h1>
+            <span class="brand-sub">手写模拟器</span>
+          </div>
         </div>
-        <span class="size-info">{{ penConfig.renderWidth }} × {{ penConfig.renderHeight }}</span>
+        <div class="header-info">
+          <span class="size-badge">{{ penConfig.renderWidth }} × {{ penConfig.renderHeight }}</span>
+        </div>
       </div>
     </header>
 
@@ -101,13 +107,17 @@ function handleExport() {
   flex-direction: column;
   height: 100vh;
   overflow: hidden;
-  background: #f5f5f5;
+  background: var(--ba-bg);
+  background-image:
+    radial-gradient(ellipse at 15% 80%, rgba(18, 137, 249, 0.04) 0%, transparent 50%),
+    radial-gradient(ellipse at 85% 15%, rgba(18, 137, 249, 0.03) 0%, transparent 50%);
 }
 
 .app-header {
   flex-shrink: 0;
-  background: #fff;
-  border-bottom: 1px solid #eee;
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--ba-border-light);
   z-index: 10;
 }
 
@@ -115,40 +125,58 @@ function handleExport() {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 10px 20px;
+  padding: 10px 24px;
 }
 
 .brand {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 12px;
+}
+
+.brand-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.brand-text {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
 }
 
 .brand-title {
-  font-size: 18px;
+  font-size: 20px;
   font-weight: 700;
-  color: #3a7bd5;
+  color: var(--ba-primary);
+  letter-spacing: -0.5px;
 }
 
 .brand-sub {
   font-size: 11px;
-  color: #999;
-  background: #f0f2f5;
-  padding: 2px 8px;
-  border-radius: 10px;
+  color: var(--ba-text-muted);
+  background: var(--ba-primary-bg);
+  padding: 2px 10px;
+  border-radius: 20px;
+  border: 1px solid var(--ba-border-light);
 }
 
-.size-info {
+.size-badge {
   font-size: 11px;
-  color: #999;
+  color: var(--ba-text-light);
+  background: var(--ba-bg-panel);
+  padding: 4px 12px;
+  border-radius: 20px;
+  border: 1px solid var(--ba-border-light);
   font-variant-numeric: tabular-nums;
 }
 
 .app-main {
   flex: 1;
   display: flex;
-  gap: 12px;
-  padding: 12px;
+  gap: 16px;
+  padding: 16px;
   min-height: 0;
 }
 
@@ -159,7 +187,7 @@ function handleExport() {
 }
 
 .sidebar {
-  width: 340px;
+  width: 350px;
   flex-shrink: 0;
   min-height: 0;
   overflow: hidden;
