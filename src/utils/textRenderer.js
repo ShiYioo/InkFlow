@@ -70,6 +70,8 @@ export function createTextRenderer() {
     const paragraphs = text.split('\n')
     const endChars = config.endChars || ''
 
+    ctx.font = `${fontSize}px ${config.fontFamily}`
+
     for (const para of paragraphs) {
       if (para === '') { lines.push(''); continue }
 
@@ -78,7 +80,6 @@ export function createTextRenderer() {
         const char = para[i]
         if (currentLine === '') { currentLine = char; continue }
 
-        ctx.font = `${fontSize}px ${config.fontFamily}`
         const testLine = currentLine + char
         const metrics = ctx.measureText(testLine)
 
@@ -182,16 +183,15 @@ export function createTextRenderer() {
 
           const originX = x
 
+          ctx.font = `${wrongFontSize}px ${config.fontFamily}`
           ctx.save()
           ctx.translate(x + wrongPx, y + wrongPy)
           ctx.rotate(wrongPr)
-          ctx.font = `${wrongFontSize}px ${config.fontFamily}`
           ctx.fillStyle = `rgba(0,0,0,${(wrongInk / 255).toFixed(3)})`
           ctx.textBaseline = 'alphabetic'
           ctx.fillText(wrongChar, 0, 0)
           ctx.restore()
 
-          ctx.font = `${wrongFontSize}px ${config.fontFamily}`
           const wrongWidth = ctx.measureText(wrongChar).width
           drawStrikethrough(ctx, originX, y, wrongFontSize, wrongInk)
 
@@ -199,16 +199,15 @@ export function createTextRenderer() {
           if (x > width - config.marginRight) break
         }
 
+        ctx.font = `${charFontSize}px ${config.fontFamily}`
         ctx.save()
         ctx.translate(x + px, y + py)
         ctx.rotate(pr)
-        ctx.font = `${charFontSize}px ${config.fontFamily}`
         ctx.fillStyle = `rgba(0,0,0,${(ink / 255).toFixed(3)})`
         ctx.textBaseline = 'alphabetic'
         ctx.fillText(char, 0, 0)
         ctx.restore()
 
-        ctx.font = `${charFontSize}px ${config.fontFamily}`
         x += ctx.measureText(char).width + config.wordSpacing + gaussRandom(config.wordSpacingSigma)
         if (x > width - config.marginRight) break
       }
