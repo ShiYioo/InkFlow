@@ -115,9 +115,15 @@ export function createTextRenderer() {
 
   function renderToCanvas(targetCanvas, width, height) {
     const canvas = targetCanvas || document.createElement('canvas')
-    canvas.width = width
-    canvas.height = height
+    const needResize = canvas.width !== width || canvas.height !== height
+    if (needResize) {
+      canvas.width = width
+      canvas.height = height
+    }
     const ctx = canvas.getContext('2d')
+    if (!needResize) {
+      ctx.clearRect(0, 0, width, height)
+    }
 
     if (backgroundImage) {
       ctx.drawImage(backgroundImage, 0, 0, width, height)

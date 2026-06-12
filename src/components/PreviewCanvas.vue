@@ -8,6 +8,14 @@ const wrapperRef = ref(null)
 let renderer = null
 let resizeObserver = null
 let debounceTimer = null
+let offscreenCanvas = null
+
+function getOffscreenCanvas() {
+  if (!offscreenCanvas) {
+    offscreenCanvas = document.createElement('canvas')
+  }
+  return offscreenCanvas
+}
 
 const props = defineProps({
   text: { type: String, default: '' },
@@ -27,7 +35,7 @@ function renderToDisplay() {
     ...props.penConfig,
   })
 
-  const renderCanvas = document.createElement('canvas')
+  const renderCanvas = getOffscreenCanvas()
   renderer.renderToCanvas(renderCanvas, props.renderWidth, props.renderHeight)
 
   const displayCanvas = canvasRef.value
@@ -126,7 +134,7 @@ onUnmounted(() => {
 function handleExport() {
   if (!renderer) return
   renderer.updateConfig({ text: props.text, ...props.penConfig })
-  const c = document.createElement('canvas')
+  const c = getOffscreenCanvas()
   renderer.renderToCanvas(c, props.renderWidth, props.renderHeight)
   c.toBlob((blob) => {
     const url = URL.createObjectURL(blob)

@@ -31,7 +31,7 @@ const PAPER_PRESETS = {
     fontSize: 46, lineSpacing: 67, marginTop: 156, marginBottom: 50, marginLeft: 133, marginRight: 134,
   },
   'paper-41': {
-    fontSize: 36, lineSpacing: 52, marginTop: 300, marginBottom: 50, marginLeft: 30, marginRight: 40,
+    fontSize: 36, lineSpacing: 52, marginTop: 300, marginBottom: 50, marginLeft: 30, marginRight: 40, wordSpacing: 2,
   },
   'paper-42': {
     fontSize: 33, lineSpacing: 74, wordSpacing: 18, marginTop: 270, marginBottom: 50, marginLeft: 106, marginRight: 120,
