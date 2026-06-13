@@ -447,9 +447,15 @@ const sampleTexts = [
   font-family: inherit;
 }
 
+.tab-btn:hover:not(.active) {
+  color: var(--ba-primary);
+  transform: translateY(-2px);
+}
+
 .tab-icon {
   font-size: 14px;
   opacity: 0.7;
+  transition: transform 0.3s var(--ba-bounce);
 }
 
 .tab-btn.active {
@@ -460,6 +466,7 @@ const sampleTexts = [
 
 .tab-btn.active .tab-icon {
   opacity: 1;
+  transform: scale(1.2);
 }
 
 .panel-body {
@@ -468,7 +475,7 @@ const sampleTexts = [
   padding: 14px;
 }
 
-.tab-content { display: flex; flex-direction: column; gap: 10px; }
+.tab-content { display: flex; flex-direction: column; gap: 10px; animation: tabSlideIn 0.4s ease both; }
 
 .control-group { display: flex; flex-direction: column; gap: 4px; }
 
@@ -545,6 +552,7 @@ const sampleTexts = [
   border-color: var(--ba-primary);
   color: var(--ba-primary);
   background: var(--ba-primary-bg);
+  transform: translateY(-2px);
 }
 
 .font-list {
@@ -553,6 +561,7 @@ const sampleTexts = [
   gap: 4px;
   max-height: 200px;
   overflow-y: auto;
+  overflow-x: hidden;
 }
 
 .font-item {
@@ -577,6 +586,7 @@ const sampleTexts = [
 
 .font-item:hover:not(.active):not(:disabled) {
   border-color: var(--ba-primary-border);
+  transform: translateX(4px);
 }
 
 .font-item:disabled { opacity: 0.5; cursor: wait; }
@@ -613,11 +623,15 @@ const sampleTexts = [
   background: var(--ba-primary);
   cursor: pointer;
   box-shadow: 0 1px 4px rgba(18, 137, 249, 0.3);
-  transition: transform var(--ba-transition);
+  transition: transform 0.2s var(--ba-bounce);
 }
 
 .slider::-webkit-slider-thumb:hover {
-  transform: scale(1.2);
+  transform: scale(1.3);
+}
+
+.slider::-webkit-slider-thumb:active {
+  transform: scale(1.4);
 }
 
 .num-input {
@@ -702,6 +716,7 @@ const sampleTexts = [
   border-color: var(--ba-primary);
   color: var(--ba-primary);
   background: var(--ba-primary-bg);
+  transform: translateY(-2px);
 }
 
 .bg-upload-area { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
@@ -759,6 +774,7 @@ const sampleTexts = [
 
 .paper-btn:hover:not(.active) {
   border-color: var(--ba-primary-border);
+  transform: translateX(4px);
 }
 
 .paper-thumb {
@@ -805,7 +821,11 @@ const sampleTexts = [
 
 .btn-primary:hover {
   box-shadow: 0 4px 16px rgba(18, 137, 249, 0.35);
-  transform: translateY(-1px);
+  transform: translateY(-2px);
+}
+
+.btn-primary:active {
+  transform: translateY(0) scale(0.97);
 }
 
 .btn-outline {
@@ -817,5 +837,10 @@ const sampleTexts = [
 .btn-outline:hover {
   background: var(--ba-primary-bg);
   border-color: var(--ba-primary);
+  transform: translateY(-2px);
+}
+
+.btn-outline:active {
+  transform: translateY(0) scale(0.97);
 }
 </style>

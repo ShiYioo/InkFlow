@@ -167,6 +167,7 @@ defineExpose({ handleExport, render: handleRender })
   box-shadow: var(--ba-shadow);
   border: 1px solid var(--ba-border-light);
   background: #eef3f9;
+  animation: fadeIn 0.8s ease 0.5s both;
 }
 
 .preview-canvas {

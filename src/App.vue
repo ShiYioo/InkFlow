@@ -49,6 +49,10 @@ function handleExport() {
 
 <template>
   <div class="app-layout">
+    <div class="deco-orb deco-orb-1"></div>
+    <div class="deco-orb deco-orb-2"></div>
+    <div class="deco-orb deco-orb-3"></div>
+
     <header class="app-header">
       <div class="header-inner">
         <div class="brand">
@@ -111,6 +115,42 @@ function handleExport() {
   background-image:
     radial-gradient(ellipse at 15% 80%, rgba(18, 137, 249, 0.04) 0%, transparent 50%),
     radial-gradient(ellipse at 85% 15%, rgba(18, 137, 249, 0.03) 0%, transparent 50%);
+  position: relative;
+}
+
+.deco-orb {
+  position: fixed;
+  border-radius: 50%;
+  filter: blur(60px);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.deco-orb-1 {
+  width: 300px;
+  height: 300px;
+  background: rgba(18, 137, 249, 0.08);
+  top: -80px;
+  left: 10%;
+  animation: float 12s ease-in-out infinite;
+}
+
+.deco-orb-2 {
+  width: 220px;
+  height: 220px;
+  background: rgba(255, 158, 205, 0.06);
+  bottom: -60px;
+  right: 20%;
+  animation: float 15s ease-in-out infinite reverse;
+}
+
+.deco-orb-3 {
+  width: 180px;
+  height: 180px;
+  background: rgba(77, 166, 255, 0.07);
+  top: 50%;
+  left: 45%;
+  animation: float 18s ease-in-out infinite;
 }
 
 .app-header {
@@ -119,6 +159,12 @@ function handleExport() {
   backdrop-filter: blur(12px);
   border-bottom: 1px solid var(--ba-border-light);
   z-index: 10;
+  animation: fadeInDown 0.6s ease both;
+}
+
+@keyframes fadeInDown {
+  from { opacity: 0; transform: translateY(-20px); }
+  to   { opacity: 1; transform: translateY(0); }
 }
 
 .header-inner {
@@ -138,6 +184,7 @@ function handleExport() {
   display: flex;
   align-items: center;
   justify-content: center;
+  animation: bounceIn 0.8s var(--ba-bounce) 0.2s both;
 }
 
 .brand-text {
@@ -151,6 +198,7 @@ function handleExport() {
   font-weight: 700;
   color: var(--ba-primary);
   letter-spacing: -0.5px;
+  animation: fadeInUp 0.6s ease 0.3s both;
 }
 
 .brand-sub {
@@ -160,6 +208,7 @@ function handleExport() {
   padding: 2px 10px;
   border-radius: 20px;
   border: 1px solid var(--ba-border-light);
+  animation: fadeInUp 0.6s ease 0.4s both;
 }
 
 .size-badge {
@@ -184,6 +233,7 @@ function handleExport() {
   flex: 1;
   min-width: 0;
   min-height: 0;
+  animation: fadeInUp 0.7s ease 0.3s both;
 }
 
 .sidebar {
@@ -191,6 +241,7 @@ function handleExport() {
   flex-shrink: 0;
   min-height: 0;
   overflow: hidden;
+  animation: slideInRight 0.7s ease 0.4s both;
 }
 
 @media (max-width: 900px) {

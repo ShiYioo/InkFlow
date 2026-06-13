@@ -5,6 +5,7 @@
   --ba-primary-bg: rgba(18, 137, 249, 0.06);
   --ba-primary-border: rgba(18, 137, 249, 0.25);
   --ba-accent: #ffe066;
+  --ba-accent-pink: #ff9ecd;
   --ba-bg: #f0f6ff;
   --ba-bg-card: #ffffff;
   --ba-bg-panel: #f8fbff;
@@ -15,10 +16,12 @@
   --ba-border-light: rgba(18, 137, 249, 0.06);
   --ba-shadow: 0 2px 16px rgba(18, 137, 249, 0.08);
   --ba-shadow-hover: 0 4px 24px rgba(18, 137, 249, 0.15);
+  --ba-glow: 0 0 20px rgba(18, 137, 249, 0.3);
   --ba-radius: 10px;
   --ba-radius-sm: 6px;
   --ba-radius-lg: 16px;
-  --ba-transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  --ba-transition: 0.3s ease;
+  --ba-bounce: cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
 *,
@@ -65,4 +68,46 @@ body {
 
 ::-webkit-scrollbar-thumb:hover {
   background: var(--ba-primary-light);
+}
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+@keyframes slideInRight {
+  from { opacity: 0; transform: translateX(30px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes bounceIn {
+  0%   { opacity: 0; transform: scale(0.6); }
+  60%  { opacity: 1; transform: scale(1.05); }
+  100% { transform: scale(1); }
+}
+
+@keyframes float {
+  0%, 100% { transform: translate(0, 0); }
+  33%      { transform: translate(20px, -30px); }
+  66%      { transform: translate(-15px, 20px); }
+}
+
+@keyframes glowPulse {
+  0%, 100% { box-shadow: 0 2px 8px rgba(18, 137, 249, 0.25); }
+  50%      { box-shadow: 0 4px 24px rgba(18, 137, 249, 0.45); }
+}
+
+@keyframes shimmer {
+  0%   { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+@keyframes tabSlideIn {
+  from { opacity: 0; transform: translateX(12px); }
+  to   { opacity: 1; transform: translateX(0); }
 }
