@@ -462,6 +462,19 @@ const sampleTexts = [
   background: #fff;
   color: var(--ba-primary);
   box-shadow: 0 1px 4px rgba(18, 137, 249, 0.12);
+  position: relative;
+}
+
+.tab-btn.active::after {
+  content: "";
+  position: absolute;
+  bottom: -1px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 20px;
+  height: 2px;
+  background-color: var(--ba-primary);
+  border-radius: 1px;
 }
 
 .tab-btn.active .tab-icon {
@@ -509,9 +522,32 @@ const sampleTexts = [
   font-weight: 600;
   color: var(--ba-primary);
   padding-top: 10px;
-  border-top: 1px solid var(--ba-border-light);
   margin-top: 4px;
   letter-spacing: 0.5px;
+  position: relative;
+  padding-bottom: 6px;
+}
+
+.section-title::before {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background-color: rgba(18, 137, 249, 0.15);
+}
+
+.section-title::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  transform: translateY(40%);
+  width: 16px;
+  height: 2px;
+  background-color: var(--ba-primary);
+  border-radius: 1px;
 }
 
 .text-input {
@@ -791,8 +827,30 @@ const sampleTexts = [
   display: flex;
   gap: 8px;
   padding: 12px 14px;
-  border-top: 1px solid var(--ba-border-light);
   flex-shrink: 0;
+  position: relative;
+}
+
+.panel-footer::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background-color: rgba(18, 137, 249, 0.15);
+}
+
+.panel-footer::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 14px;
+  transform: translateY(40%);
+  width: 20px;
+  height: 2px;
+  background-color: var(--ba-primary);
+  border-radius: 1px;
 }
 
 .btn {
@@ -816,11 +874,11 @@ const sampleTexts = [
 .btn-primary {
   background: linear-gradient(135deg, #1289f9, #4da6ff);
   color: #fff;
-  box-shadow: 0 2px 8px rgba(18, 137, 249, 0.25);
+  box-shadow: 0 2px 8px rgba(18, 137, 249, 0.25), 2px 4px 12px rgba(167, 216, 234, 0.4);
 }
 
 .btn-primary:hover {
-  box-shadow: 0 4px 16px rgba(18, 137, 249, 0.35);
+  box-shadow: 0 4px 16px rgba(18, 137, 249, 0.35), 2px 4px 16px rgba(167, 216, 234, 0.6);
   transform: translateY(-2px);
 }
 

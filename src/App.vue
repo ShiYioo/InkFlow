@@ -157,9 +157,32 @@ function handleExport() {
   flex-shrink: 0;
   background: rgba(255, 255, 255, 0.85);
   backdrop-filter: blur(12px);
-  border-bottom: 1px solid var(--ba-border-light);
   z-index: 10;
   animation: fadeInDown 0.6s ease both;
+  position: relative;
+}
+
+.app-header::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background-color: rgba(18, 137, 249, 0.12);
+}
+
+.app-header::before {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 24px;
+  transform: translateY(40%);
+  width: 32px;
+  height: 2px;
+  background-color: var(--ba-primary);
+  border-radius: 1px;
+  z-index: 1;
 }
 
 @keyframes fadeInDown {
@@ -213,12 +236,13 @@ function handleExport() {
 
 .size-badge {
   font-size: 11px;
-  color: var(--ba-text-light);
-  background: var(--ba-bg-panel);
-  padding: 4px 12px;
-  border-radius: 20px;
-  border: 1px solid var(--ba-border-light);
+  color: #fff;
+  background: var(--ba-primary);
+  padding: 3px 12px;
+  border-radius: 4px;
   font-variant-numeric: tabular-nums;
+  font-weight: 600;
+  animation: fadeInUp 0.6s ease 0.5s both;
 }
 
 .app-main {

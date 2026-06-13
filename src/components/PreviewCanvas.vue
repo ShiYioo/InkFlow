@@ -164,8 +164,8 @@ defineExpose({ handleExport, render: handleRender })
   height: 100%;
   border-radius: var(--ba-radius-lg);
   overflow: hidden;
-  box-shadow: var(--ba-shadow);
-  border: 1px solid var(--ba-border-light);
+  box-shadow: var(--ba-shadow), 2px 4px 12px rgba(167, 216, 234, 0.4);
+  border: 1px solid rgba(18, 137, 249, 0.1);
   background: #eef3f9;
   animation: fadeIn 0.8s ease 0.5s both;
 }
