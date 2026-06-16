@@ -54,8 +54,22 @@ export async function loadUploadedFont(file) {
 }
 
 export function preloadAllFonts() {
-  const schedule = window.requestIdleCallback || ((cb) => setTimeout(cb, 1))
-  BUILT_IN_FONTS.forEach((font, i) => {
-    schedule(() => loadFont(font), { timeout: 5000 + i * 1000 })
-  })
+  const schedule = (cb) => {
+    if (window.requestIdleCallback) {
+      window.requestIdleCallback(cb, { timeout: 8000 })
+    } else {
+      setTimeout(cb, 1)
+    }
+  }
+
+  const queue = [...BUILT_IN_FONTS]
+  const loadNext = () => {
+    const font = queue.shift()
+    if (!font) return
+    schedule(() => { loadFont(font).finally(loadNext) })
+  }
+
+  const start = () => schedule(loadNext)
+  if (document.readyState === 'complete') start()
+  else window.addEventListener('load', start, { once: true })
 }
