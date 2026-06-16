@@ -1,7 +1,8 @@
 <script setup>
-import { ref, reactive } from 'vue'
+import { ref, reactive, onMounted } from 'vue'
 import PreviewCanvas from './components/PreviewCanvas.vue'
 import ControlPanel from './components/ControlPanel.vue'
+import { preloadAllFonts } from './utils/fontLoader'
 
 const canvasRef = ref(null)
 const activeTab = ref('text')
@@ -45,6 +46,10 @@ function handleRender() {
 function handleExport() {
   canvasRef.value?.handleExport()
 }
+
+onMounted(() => {
+  preloadAllFonts()
+})
 </script>
 
 <template>
