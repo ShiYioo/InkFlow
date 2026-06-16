@@ -1,38 +1,56 @@
-# inkflow
+# InkFlow · 手写模拟器
 
-This template should help get you started developing with Vue 3 in Vite.
+将文字渲染成逼真的手写效果，并导出为高清 PNG 图片。基于 Canvas 2D 实时渲染，通过高斯扰动模拟真实书写的不规则感。
 
-## Recommended IDE Setup
+## 功能特性
 
-[VS Code](https://code.visualstudio.com/) + [Vue (Official)](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur).
+- **多种手写字体**：内置 5 款手写体，支持上传自定义字体（ttf/otf/woff）
+- **真实纸张背景**：内置 8 款纸张（草稿纸、A4、横线纸、信稿纸、格子稿纸等），支持上传自定义背景
+- **笔迹扰动模拟**：通过高斯分布模拟字体大小、字间距、横向/纵向偏移、旋转、墨迹深浅等自然变化
+- **涂改模拟**：可调概率生成涂改线，模拟真实书写中的修改痕迹
+- **排版控制**：字号、行间距、字间距、四向边距、下划线、英文自动加空格
+- **纸张预设**：A4 / B5 / 小尺寸，一键切换
+- **实时预览 + 导出**：所见即所得，一键导出高清 PNG
 
-## Recommended Browser Setup
+## 技术栈
 
-- Chromium-based browsers (Chrome, Edge, Brave, etc.):
-  - [Vue.js devtools](https://chromewebstore.google.com/detail/vuejs-devtools/nhdogjmejiglipccpnnnanhbledajbpd)
-  - [Turn on Custom Object Formatter in Chrome DevTools](http://bit.ly/object-formatters)
-- Firefox:
-  - [Vue.js devtools](https://addons.mozilla.org/en-US/firefox/addon/vue-js-devtools/)
-  - [Turn on Custom Object Formatter in Firefox DevTools](https://fxdx.dev/firefox-devtools-custom-object-formatters/)
+- Vue 3（`<script setup>`）
+- Vite 8
+- Canvas 2D API（高分辨率离屏渲染）
 
-## Customize configuration
+## 快速开始
 
-See [Vite Configuration Reference](https://vite.dev/config/).
-
-## Project Setup
-
-```sh
-npm install
-```
-
-### Compile and Hot-Reload for Development
+> Node 版本要求：`^20.19.0` 或 `>=22.12.0`
 
 ```sh
-npm run dev
+npm install      # 安装依赖
+npm run dev      # 启动开发服务器
+npm run build    # 构建生产版本
+npm run preview  # 预览构建产物
 ```
 
-### Compile and Minify for Production
+## 项目结构
 
-```sh
-npm run build
 ```
+inkflow/
+├── public/
+│   ├── fonts/            # 内置手写字体
+│   └── papers/           # 内置纸张背景
+└── src/
+    ├── components/
+    │   ├── ControlPanel.vue   # 控制面板（文字/笔迹/纸张）
+    │   └── PreviewCanvas.vue  # 画布预览与导出
+    ├── utils/
+    │   ├── textRenderer.js    # 文字渲染核心逻辑
+    │   ├── fontLoader.js      # 字体加载（内置 + 上传）
+    │   └── paperTextures.js   # 纸张/背景图加载
+    ├── App.vue
+    └── main.js
+```
+
+## 使用说明
+
+1. 在**文字**标签页输入或粘贴要模拟手写的内容
+2. 在**笔迹**标签页选择字体、调整基本参数（可展开高级参数微调扰动与涂改）
+3. 在**纸张**标签页选择纸张背景或上传自定义图片
+4. 点击**预览**查看效果，满意后点击**导出 PNG** 下载
